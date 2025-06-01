@@ -24,7 +24,7 @@ mypy = ">=0.981"
 
 [tool.coverage.run]
 branch = true
-source = ["otx-streaming"]
+source = ["otx_streaming"]
 
 [tool.coverage.report]
 show_missing = true
