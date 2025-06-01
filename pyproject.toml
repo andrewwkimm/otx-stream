@@ -34,10 +34,10 @@ fail_under = 50
 testpaths=["tests"]
 
 [tool.pyright]
-include = ["otx-streaming"]
+include = ["otx_streaming"]
 
 [tool.mypy]
-files = ["otx-streaming", "tests"]
+files = ["otx_streaming", "tests"]
 cache_dir = "${HOME}/.mypy_cache"
 ignore_errors = false
 disallow_untyped_defs = true
