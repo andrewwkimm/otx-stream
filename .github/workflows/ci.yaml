@@ -36,7 +36,7 @@ jobs:
           poetry run black tests
           poetry run flake8 tests
           poetry run mypy tests --ignore-missing-import
-          poetry run pytest --cov=otx-streaming --cov-report term --cov-report xml
+          poetry run pytest --cov=otx_streaming --cov-report term --cov-report xml
 
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v4
