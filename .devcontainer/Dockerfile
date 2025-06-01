@@ -7,8 +7,20 @@ FROM mcr.microsoft.com/devcontainers/python:${VARIANT}
 RUN \
     apt-get upgrade \
     && apt-get update \
-    && apt-get install -y bash-completion curl \
+    && apt-get install -y bash-completion curl openjdk-17-jdk \
     && pip install pre-commit
+
+# Install Kafka CLI tools
+RUN cd /tmp && \
+    KAFKA_VERSION="3.9.0" && \
+    SCALA_VERSION="2.13" && \
+    wget "https://downloads.apache.org/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz" && \
+    tar -xzf "kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz" -C /opt/ && \
+    mv "/opt/kafka_${SCALA_VERSION}-${KAFKA_VERSION}" /opt/kafka && \
+    rm "kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz" && \
+    chown -R vscode:vscode /opt/kafka
+
+ENV PATH="${PATH}:/opt/kafka/bin"
 
 # Coding only for vscode user and not root
 USER vscode

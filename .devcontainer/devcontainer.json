@@ -2,17 +2,13 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.187.0/containers/python-3
 {
 	"name": "Python 3",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"context": "..",
-		"args": {
-			// Update 'VARIANT' to pick a Python version: 3, 3.6, 3.7, 3.8, 3.9
-			"VARIANT": "3.10",
-			// Options
-			"INSTALL_NODE": "false",
-			"NODE_VERSION": "lts/*"
-		}
-	},
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspace",
+	// Forward ports for Kafka services
+	"forwardPorts": [9092],
+	// Keep container running
+	"shutdownAction": "stopCompose",
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"editor.defaultFormatter": "ms-python.python",
@@ -41,6 +37,6 @@
 		"redhat.vscode-yaml"
 	],
 	// Set project folder as safe directory and changes ownership of it to vscode.
-	"postCreateCommand": "bash ./.devcontainer/setup.sh",
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	"postCreateCommand": "bash ./.devcontainer/setup.sh"
 }
