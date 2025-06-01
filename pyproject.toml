@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "otx-streaming"
+name = "otx_streaming"
 version = "0.1.0"
-description = "otx-streaming"
+description = "Kafka streaming data pipeline using OTX public API."
 authors = ["Kim, Andrew <andrewkimka@gmail.com>"]
 readme = "README.md"
 
